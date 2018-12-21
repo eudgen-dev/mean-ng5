@@ -8,44 +8,50 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { LoginComponent } from './login/login.component';
 
+/* Modals */
+import { ModalTaskComponent } from './modals/task/modal.task.component';
+import { ErrorsComponent } from './errors.component';
+
 import { HttpService } from './services/http.service';
 import { AuthGuard } from './auth.guard';
 
 const appRoutes: Routes = [
-    {
-        path: 'tasks',
-        component: TasksComponent,
-        data: { title: 'Tasks List' },
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'login',
-        component: LoginComponent,
-        data: { title: 'Login' }
-    },
-    { path: '',
-        redirectTo: '/login',
-        pathMatch: 'full'
-    }
+  {
+    path: 'tasks',
+    component: TasksComponent,
+    data: { title: 'Tasks List' },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: { title: 'Login' }
+  },
+  { path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        TasksComponent,
-        LoginComponent
-    ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        RouterModule.forRoot(
-            appRoutes,
-            { enableTracing: false } // <-- debugging purposes only
-        )
-    ],
-    providers: [AuthGuard, HttpService],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    TasksComponent,
+    LoginComponent,
+    ModalTaskComponent,
+    ErrorsComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: false } // <-- debugging purposes only
+    )
+  ],
+  providers: [AuthGuard, HttpService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

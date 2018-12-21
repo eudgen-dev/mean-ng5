@@ -1,10 +1,10 @@
 {
-  "name": "mean-secure",
-  "version": "0.0.0",
+  "name": "mean-ng5",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng build && node ./bin/www",
+    "start": "ng build --prod && node ./bin/www",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
