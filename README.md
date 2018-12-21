@@ -15,5 +15,8 @@
 ## Usage
 
 Login: test@test.com
+
 PWD: password
+
+Use to access: http://localhost:3000
 
