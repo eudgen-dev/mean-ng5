@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { HttpService } from '../services/http.service';
+import { User } from '../interfaces';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,21 @@ export class LoginComponent implements OnInit {
   }
 
   initForm() {
-
+    this.login = this.fb.group({
+      login: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
   }
 
   doLogin() {
-
+    const sendData: any = this.login.value;
+    this.http.post('api/signin', sendData).subscribe((resp: User) => {
+      localStorage.setItem('jwtToken', resp.token);
+      localStorage.setItem('userName', resp.userName);
+      this.router.navigate(['tasks']);
+    }, err => {
+      this.message = err.error.msg;
+    });
 
   }
 
